@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Swikar Paudel | AI/ML Portfolio</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-color: #050b1a;
+            --navy: #0a1a3f;
+            --accent: #4da3ff;
+            --neon: #5ef2ff;
+            --text: #e6e9f0;
+            --muted: #9aa4bf;
+            --glass: rgba(255, 255, 255, 0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: radial-gradient(circle at top, #071a3d, #040816 70%);
+            color: var(--text);
+        }
+
+        /* Neon glow utility */
+        .neon {
+            text-shadow: 0 0 10px rgba(94, 242, 255, 0.6);
+        }
+
+
+        /* ================= NAVBAR ================= */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(5, 11, 26, 0.85);
+            backdrop-filter: blur(10px);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav .logo {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text);
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--accent);
+        }
+
+        /* ================= SECTIONS ================= */
+        section {
+            max-width: 1200px;
+            margin: auto;
+            padding: 5rem 2rem;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s ease;
+        }
+
+        section.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        h2 {
+            font-size: 2.4rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            color: var(--accent);
+        }
+
+        /* ================= HERO ================= */
+        .hero {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            align-items: center;
+            min-height: 90vh;
+            gap: 2rem;
+            opacity: 1;
+            transform: none;
+        }
+
+        .hero h1 {
+            font-size: 3.2rem;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .hero h1 span {
+            color: var(--neon);
+        }
+
+        .hero p {
+            margin: 1.5rem 0;
+            color: var(--muted);
+            max-width: 520px;
+        }
+
+        .btn {
+            padding: 0.7rem 1.8rem;
+            border-radius: 30px;
+            border: none;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn.primary {
+            background: linear-gradient(135deg, var(--accent), var(--neon));
+            color: #000;
+            box-shadow: 0 0 15px rgba(94, 242, 255, 0.4);
+        }
+
+        .btn.secondary {
+            background: transparent;
+            color: var(--neon);
+            border: 1px solid var(--neon);
+        }
+
+        .btn:hover {
+            transform: translateY(-4px) scale(1.03);
+            box-shadow: 0 0 25px rgba(94, 242, 255, 0.7);
+        }
+
+        .hero {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            align-items: center;
+        }
+
+        .hero-image {
+            display: flex;
+            justify-content: flex-end;
+            /* PUSHES image to RIGHT */
+        }
+
+        .profile-img.circle {
+            width: 100%;
+            height: 100%;
+            min-width: 140px;
+            min-height: 140px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--navy), var(--neon));
+            padding: 3px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 25px rgba(94, 242, 255, 0.6);
+        }
+
+        .profile-img.circle img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            /* THIS fixes oval issue */
+            aspect-ratio: 1 / 1;
+            /* Forces perfect square */
+            display: block;
+        }
+
+
+        /* ================= CARDS ================= */
+        .glass {
+            background: var(--glass);
+            backdrop-filter: blur(14px);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+            transition: all 0.4s ease;
+        }
+
+        .glass:hover {
+            box-shadow: 0 0 35px rgba(94, 242, 255, 0.4);
+            transform: translateY(-6px);
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        /* ================= SKILLS ================= */
+        .bar div {
+            box-shadow: 0 0 12px rgba(94, 242, 255, 0.6);
+        }
+
+        /* ================= PROJECT ================= */
+        .project-img {
+            box-shadow: 0 0 35px rgba(77, 163, 255, 0.4);
+        }
+
+        /* ================= CONTACT ================= */
+        .contact-info {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        form {
+            max-width: 500px;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        input,
+        textarea {
+            padding: 0.7rem 1rem;
+            border-radius: 10px;
+            border: none;
+            outline: none;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            background: #040816;
+            color: var(--muted);
+            font-size: 0.85rem;
+        }
+
+        /* ================= FOOTER ================= */
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            background: #040816;
+            color: var(--muted);
+            font-size: 0.85rem;
+            border-top: 1px solid rgba(77, 163, 255, 0.15);
+        }
+
+        @media (max-width: 900px) {
+
+            .hero,
+            .about,
+            .project {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <header>
+        <nav>
+            <div class="logo">Swikar Paudel</div>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#resume">Resume</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- HERO -->
+    <section id="home" class="hero">
+        <div>
+            <h1> <span>Swikar Paudel</span></h1>
+            <h3>Final Year Computer Engineering Student | AI/ML Enthusiast</h3>
+            <p>
+                Swikar Paudel is a final-year Computer Engineering student passionate about
+                Artificial Intelligence and Machine Learning. He focuses on building
+                intelligent systems using deep learning and modern programming technologies.
+            </p>
+            <div class="buttons">
+                <a href="#projects"><button class="btn primary">View Projects</button></a>
+                <a href="#resume"><button class="btn primary">View Resume</button></a>
+                <a href="#contact"><button class="btn primary">Contact Me</button></a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <div class="profile-img circle">
+                <img src="images/profile.jpg" alt="Swikar Paudel" />
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+        <h2>About Me</h2>
+        <div class="about">
+            <div class="glass">
+                <p>
+                    I am Swikar Paudel, a final-year Computer Engineering student with a strong
+                    passion for Artificial Intelligence and Machine Learning. I enjoy exploring
+                    deep learning research, experimenting with models, and building intelligent
+                    solutions using modern technologies.
+                </p>
+            </div>
+            <br>
+            <div class="glass">Abstract Tech Illustration</div>
+        </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section id="education">
+        <h2>Education</h2>
+        <div class="cards">
+            <div class="glass">
+                <h3>Higher Secondary</h3>
+                <p>Kathmandu Model Secondary School</p>
+                <p>Major: Physical Science</p>
+                <p>Graduation Year: 2021</p>
+            </div>
+            <div class="glass">
+                <h3>Bachelor of Engineering</h3>
+                <p>Advanced College of Engineering and Management, Tribhuvan University</p>
+                <p>Major: Computer Engineering</p>
+                <p>Graduation Year: 2026</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience">
+        <h2>Experience</h2>
+        <div class="cards">
+            <div class="glass">
+                <h4>Machine Learning Intern</h4>
+                <p>Prodigy InfoTech</p>
+                <p>15 Dec 2025 – 15 Jan 2026</p>
+                <p>
+                    Worked on machine learning concepts and implementations, gaining hands-on
+                    experience in real-world ML tasks.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+        <h2>Skills</h2>
+        <div class="glass">
+            <div class="skill"><span>Python</span>
+                <div class="bar">
+                    <div style="width:85%"></div>
+                </div>
+            </div>
+            <div class="skill"><span>Machine Learning</span>
+                <div class="bar">
+                    <div style="width:80%"></div>
+                </div>
+            </div>
+            <div class="skill"><span>C++</span>
+                <div class="bar">
+                    <div style="width:70%"></div>
+                </div>
+            </div>
+            <div class="skill"><span>C</span>
+                <div class="bar">
+                    <div style="width:65%"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- RESUME -->
+    <section id="resume">
+        <h2>Resume Snapshot</h2>
+        <div class="cards">
+            <div class="glass">
+                <h4>AI / Machine Learning Focus</h4>
+                <p>
+                    Final-year Computer Engineering student with hands-on experience in machine learning,
+                    deep learning, and medical image analysis. Strong foundation in Python, U-Net-based
+                    segmentation, and applied ML through internships and academic projects.
+                </p>
+            </div>
+            <div class="glass">
+                <h4>Key Highlights</h4>
+                <ul style="margin-left:1rem; line-height:1.8;">
+                    <li>Machine Learning Intern – Prodigy InfoTech</li>
+                    <li>Medical Image Segmentation using U-Net</li>
+                    <li>Strong Python & ML fundamentals</li>
+                    <li>Research-oriented mindset</li>
+                </ul>
+            </div>
+            <div class="glass" style="text-align:center;">
+                <h4>Full Resume</h4>
+                <p>You can download my complete resume for detailed academic and technical information.</p>
+                <a href="images/resume.pdf" target="_blank">
+                    <button class="btn primary">Download Resume (PDF)</button>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+        <h2>Projects</h2>
+        <div class="project glass">
+            <div class="project-img">Project Image</div>
+            <div>
+                <h4>Cataract Detection System</h4>
+                <p>
+                    This project uses a deep learning architecture, U-Net, for segmentation of
+                    the cataract region in eye images to detect cataract accurately.
+                </p>
+                <p><strong>Tech:</strong> Deep Learning, U-Net, Python</p>
+                <a href="https://github.com/SwikarPaudel/Minor-project" target="_blank">
+                    <button class="btn primary">View on GitHub</button>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section>
+        <h2>Current Focus</h2>
+        <div class="glass" style="text-align:center;">
+            <p>
+                Currently focused on learning, projects, and academic growth in AI and
+                Machine Learning.
+            </p>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+        <h2>Contact</h2>
+        <div class="contact-info">
+            <p>Email: swikarpaudel26@gmail.com</p>
+            <p>
+                <a href="https://github.com/SwikarPaudel" target="_blank">GitHub</a> |
+                <a href="https://www.linkedin.com/in/swikar-paudel-631528255/" target="_blank">LinkedIn</a>
+            </p>
+        </div>
+        <form>
+            <input type="text" placeholder="Your Name" />
+            <input type="email" placeholder="Your Email" />
+            <textarea rows="4" placeholder="Your Message"></textarea>
+            <button class="btn primary" type="submit">Send Message</button>
+        </form>
+    </section>
+
+    <footer>
+        © 2026 Swikar Paudel | AI & Machine Learning Portfolio
+    </footer>
+
+    <script>
+        const sections = document.querySelectorAll('section');
+        const reveal = () => {
+            sections.forEach(sec => {
+                const top = sec.getBoundingClientRect().top;
+                if (top < window.innerHeight - 100) {
+                    sec.classList.add('show');
+                }
+            });
+        };
+        window.addEventListener('scroll', reveal);
+        reveal();
+    </script>
+</body>
+
+</html>
