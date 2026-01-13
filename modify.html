@@ -221,8 +221,20 @@
 
         /* ================= PROJECT ================= */
         .project-img {
-            box-shadow: 0 0 35px rgba(77, 163, 255, 0.4);
+            
+            border-radius: 16px;
+            overflow: hidden;
         }
+
+        .project-img img {
+            width: 50%;
+            height: auto;
+            /* ✅ FIX */
+            display: block;
+            margin: 0 auto; /* center horizontally */
+        }
+
+
 
         /* ================= CONTACT ================= */
         .contact-info {
@@ -299,12 +311,10 @@
     <section id="home" class="hero">
         <div>
             <h1> <span>Swikar Paudel</span></h1>
-            <h3>Final Year Computer Engineering Student | AI/ML Enthusiast</h3>
-            <p>
-                Swikar Paudel is a final-year Computer Engineering student passionate about
-                Artificial Intelligence and Machine Learning. He focuses on building
-                intelligent systems using deep learning and modern programming technologies.
-            </p>
+            <h3>Final Year Computer Engineering Student </h3>
+
+            <h3> AI/ ML Enthusiast</h3>
+
             <div class="buttons">
                 <a href="#projects"><button class="btn primary">View Projects</button></a>
                 <a href="#resume"><button class="btn primary">View Resume</button></a>
@@ -324,14 +334,22 @@
         <div class="about">
             <div class="glass">
                 <p>
-                    I am Swikar Paudel, a final-year Computer Engineering student with a strong
+                    I am Swikar Paudel, final year Computer Engineering student with a strong
                     passion for Artificial Intelligence and Machine Learning. I enjoy exploring
                     deep learning research, experimenting with models, and building intelligent
                     solutions using modern technologies.
                 </p>
+                <br>
+                <p>
+                    Passionate about transforming ideas into reality through code.
+                    With a deep love for problem-solving and continuous learning, I'm always on
+                    the lookout for the next challenge. From crafting efficient algorithms to b
+                    uilding user-friendly applications, coding is not just my profession,
+                    it's my passion.
+                </p>
             </div>
-            <br>
-            <div class="glass">Abstract Tech Illustration</div>
+
+
         </div>
     </section>
 
@@ -431,15 +449,36 @@
     <section id="projects">
         <h2>Projects</h2>
         <div class="project glass">
-            <div class="project-img">Project Image</div>
+            <div class="project-img">
+                <img src="images/cataract.jpg" alt="Cataract Detection Project" />
+            </div>
+            <br>
             <div>
                 <h4>Cataract Detection System</h4>
                 <p>
-                    This project uses a deep learning architecture, U-Net, for segmentation of
+                    This project uses a deep learning architecture, U-Net for segmentation of
                     the cataract region in eye images to detect cataract accurately.
                 </p>
                 <p><strong>Tech:</strong> Deep Learning, U-Net, Python</p>
                 <a href="https://github.com/SwikarPaudel/Minor-project" target="_blank">
+                    <button class="btn primary">View on GitHub</button>
+                </a>
+            </div>
+        </div>
+        <br>
+        <div class="project glass">
+            <div class="project-img">
+                <img src="images/financial.png" alt="Financial Dashboard" />
+            </div>
+            <br>
+            <div>
+                <h4>Interactive Financial Dashboard</h4>
+                <p>
+                    This project showcases data engineering,
+                     API integration, and front-end development skills.
+                </p>
+                <p><strong>Tech:</strong> Rest API, Python, Streamlit</p>
+                <a href="https://github.com/SwikarPaudel/Streamlit_Financial_Dashboard" target="_blank">
                     <button class="btn primary">View on GitHub</button>
                 </a>
             </div>
@@ -476,7 +515,7 @@
     </section>
 
     <footer>
-        © 2026 Swikar Paudel | AI & Machine Learning Portfolio
+        © 2026 Swikar Paudel Portfolio
     </footer>
 
     <script>
