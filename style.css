@@ -1,0 +1,195 @@
+:root {
+    --sidebar-width: 300px;
+    --primary-blue: #2c98f0;
+    --bg-white: #ffffff;
+    --text-black: #000000;
+    --light-grey: #f2f3f7;
+}
+
+body.dark-theme {
+    --bg-white: #121212;
+    --text-black: #e0e0e0;
+    --light-grey: #1f1f1f;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+/* LEFT SIDEBAR */
+#sidebar {
+    width: 300px;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background: var(--bg-white);
+    color: var(--text-black);
+    border-right: 1px solid var(--light-grey);
+    padding: 50px 0;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    z-index: 1000;
+}
+
+.profile-img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+    margin-bottom: 20px;
+    margin: 0 auto 20px;
+}
+
+
+.nav-menu ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 30px;
+}
+
+.nav-menu li {
+    padding: 10px 0;
+}
+
+.nav-menu a {
+    text-decoration: none;
+    color: var(--text-black);
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 1px;
+}
+
+.nav-menu li.active a {
+    color: var(--primary-blue);
+}
+
+.sidebar-footer {
+    margin-top: auto;
+    /* Pushes footer to the bottom of the sidebar */
+    padding: 30px 20px;
+    text-align: center;
+    width: 100%;
+}
+
+/* RIGHT SIDE */
+#main {
+    margin-left: 300px;
+    width: calc(100% - 300px);
+    display : block;
+    background: var(--bg-white);
+    color: var(--text-black);
+    padding-bottom: 0;
+    min-height: 100vh;
+    position: relative;
+}
+
+.hero-section {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.hero-text {
+    flex: 1;
+    padding: 0 10%;
+}
+
+.hero-text h1 {
+    font-size: 60px;
+    font-weight: 700;
+}
+
+.hero-image {
+    flex: 3;
+    height: 75%;
+    background-size: cover;
+    filter: grayscale(100%);
+}
+
+.content-section {
+    padding: 60px 10%;
+    width: 100%;
+    clear: both;
+    /* Prevents it from jumping up into the gaps of other sections */
+    display: block;
+    ;
+    border-bottom: 1px solid var(--light-grey);
+}
+
+.heading-meta {
+    font-size: 12px;
+    text-transform: uppercase;
+    color: #999;
+    letter-spacing: 3px;
+}
+
+.section-title {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 30px;
+}
+
+
+/* Project Card Styling */
+.project-card {
+    background: var(--light-grey);
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    transition: transform 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+}
+
+.project-img-container {
+    width: 100%;
+    height: 200px;
+    /* Fixed height for consistency */
+    overflow: hidden;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.project-img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* This ensures the image fills the area without stretching */
+    transition: transform 0.5s ease;
+}
+
+.project-card:hover .project-img-container img {
+    transform: scale(1.1);
+    /* Zoom effect on hover */
+}
+
+/* Dark Mode Toggle */
+.dark-mode-btn {
+    background: var(--light-grey);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    color: var(--text-black);
+}
+@media screen and (max-width: 600px) {
+    #sidebar {
+        width: 80px;      /* Make sidebar narrow on phones */
+        min-width: 80px;
+    }
+    #sidebar .name, #sidebar .tagline {
+        display: none;    /* Hide text, show only icons if needed */
+    }
+    #main {
+        margin-left: 80px; 
+        width: calc(100% - 80px);
+    }
+}
